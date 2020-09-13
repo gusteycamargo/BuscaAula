@@ -52,6 +52,8 @@
                         <img width="36px" height="36px" src="{{ asset('img/aluno_ico.png') }}">
                     @elseif($tag=="PERFIL")
                         <img width="36px" height="36px" src="{{ asset('img/admin_ico.png') }}">
+                    @elseif($tag=="SOL")
+                        <img width="36px" height="36px" src="{{ asset('img/add_people_ico.png') }}">
                     @elseif($tag=="AUT")
                         <img width="36px" height="36px" src="{{ asset('img/login_ico.png') }}">
                     @elseif($tag=="DISCIPLINA")
