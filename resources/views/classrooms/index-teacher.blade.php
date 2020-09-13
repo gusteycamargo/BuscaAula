@@ -34,6 +34,12 @@
                             <label><b>Nome</b></label>
                             <input type="text" class="form-control" name="name" id="name" required>
                         </div>
+                        <div class='col-sm-12' style="margin-top: 14px">
+                            <label><b>Alunos matrículados</b></label>
+                            <div id="students" class="column">
+
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Salvar</button>
@@ -127,8 +133,18 @@
             $('#modalClass').modal().find('.modal-title').text("Alterar turma");
 
             $.getJSON('/api/classes/'+id, function(data) {
+                console.log(data);
                 $('#id').val(data.id);
                 $('#name').val(data.name);
+                $('#students').empty();
+                let line = ''
+                for (const stud of data.student) {
+                    line = line + '<div>'
+                    line = line + '<input type="checkbox" name="students[]" value="'+stud.id+'"> <label>'+stud.name+'</label>'
+                    line = line + '</div>'
+                }
+                
+                $('#students').append(line)
                 $('#modalClass').modal('show');
             });
         }

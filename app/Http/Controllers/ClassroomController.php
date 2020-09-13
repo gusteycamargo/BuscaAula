@@ -40,7 +40,10 @@ class ClassroomController extends Controller
 
     public function show($id)
     {
-        $classroom = Classroom::findOrFail($id);
+        $classroom = Classroom::where(function ($query) use($id) {
+                $query->where('id', '=', $id);
+            })->with(['student'])->first();
+
         if(isset($classroom)) {
             return json_encode($classroom);
         }
