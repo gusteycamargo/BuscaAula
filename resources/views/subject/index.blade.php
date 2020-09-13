@@ -1,4 +1,4 @@
-@extends('templates.main', ['titulo' => "Matérias", 'tag' => "CURSO"])
+@extends('templates.default', ['titulo' => "Matérias", 'tag' => "CURSO"])
 
 @section('conteudo')
  

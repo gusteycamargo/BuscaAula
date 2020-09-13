@@ -17,14 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('disciplinas/load', 'Disciplinas@loadJson');
-Route::get('professores/load', 'Professores@loadJson');
-Route::get('cursos/load', 'Cursos@loadJson');
 Route::get('subjects/load', 'SubjectController@loadJson');
 Route::get('teachers/{id}', 'StudentController@showTeacher');
-Route::post('matriculas', 'Matriculas@store');
-Route::resource('alunos', 'Alunos');
-Route::resource('cursos', 'Cursos');
-Route::resource('disciplinas', 'Disciplinas');
+Route::post('solicitations', 'SolicitationController@store');
+Route::delete('solicitations/{id}', 'SolicitationController@destroy');
+Route::get('classes/load/{id}', 'ClassroomController@loadJsonClassesWithTeacherLogged');
+
+Route::post('registration', 'RegistrationController@store');
+
+Route::post('classes', 'ClassroomController@store');
+Route::get('classes/{id}', 'ClassroomController@show');
+Route::put('classes/{id}', 'ClassroomController@update');
+
 Route::resource('subjects', 'SubjectController');
 

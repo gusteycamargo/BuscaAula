@@ -53,16 +53,16 @@
                             <div class="row">
                                 <label class="col-md-4 col-form-label text-md-right">{{ __('Horário disponível') }}</label>
                                 <div class="col col-md-3">
-                                    <input id="initial" placeholder="De" type="time" class="form-control @error('initial') is-invalid @enderror" name="initial" required autocomplete="initial">
-                                    @error('initial')
+                                    <input id="hour_initial" placeholder="De" type="time" class="form-control @error('hour_initial') is-invalid @enderror" name="hour_initial" required autocomplete="hour_initial">
+                                    @error('hour_initial')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
                                 <div class="col col-md-3">
-                                    <input id="final" placeholder="Até" type="time" class="form-control @error('final') is-invalid @enderror" name="final" required autocomplete="final">
-                                    @error('final')
+                                    <input id="hour_final" placeholder="Até" type="time" class="form-control @error('hour_final') is-invalid @enderror" name="hour_final" required autocomplete="hour_final">
+                                    @error('hour_final')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

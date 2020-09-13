@@ -55,6 +55,8 @@ class TeacherRegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:teachers'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'subject' => ['required', 'max:3', 'min:1,'],
+            'hour_initial' => ['required'],
+            'hour_final' => ['required']
         ]);
     }
 
@@ -85,6 +87,8 @@ class TeacherRegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'subject_id' => $data['subject'],
+            'hour_initial' => $data['hour_initial'],
+            'hour_final' => $data['hour_final'],
             'password' => Hash::make($data['password']),
         ]);
     }

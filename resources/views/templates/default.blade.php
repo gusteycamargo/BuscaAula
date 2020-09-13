@@ -50,6 +50,8 @@
                         <img width="36px" height="36px" src="{{ asset('img/curso_ico.png') }}">
                     @elseif($tag=="ALUNO")
                         <img width="36px" height="36px" src="{{ asset('img/aluno_ico.png') }}">
+                    @elseif($tag=="PERFIL")
+                        <img width="36px" height="36px" src="{{ asset('img/admin_ico.png') }}">
                     @elseif($tag=="AUT")
                         <img width="36px" height="36px" src="{{ asset('img/login_ico.png') }}">
                     @elseif($tag=="DISCIPLINA")
@@ -89,6 +91,10 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item">
                                     E-mail: {{ Auth::user()->email }}
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('profile-teacher') }}">
+                                    <u>Ver meu perfil</u>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout-teacher') }}"

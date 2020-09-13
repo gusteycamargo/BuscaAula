@@ -16,7 +16,7 @@ class Teacher extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'subject_id',
+        'name', 'email', 'password', 'subject_id', 'hour_initial', 'hour_final'
     ];
 
     /**
@@ -36,5 +36,9 @@ class Teacher extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function solicitations() {
+        return $this->hasMany('\App\Solicitation');
+    }
 }
 

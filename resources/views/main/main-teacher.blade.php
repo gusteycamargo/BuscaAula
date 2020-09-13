@@ -1,5 +1,5 @@
 
- @extends('templates.main', ['titulo' => "Menu", 'tag' => "HOME"])
+ @extends('templates.default', ['titulo' => "Menu", 'tag' => "HOME"])
  @section('titulo') <b>Menu</b> @endsection
  @section('conteudo')
  
@@ -13,27 +13,19 @@
             </h3>
         </div>
         <div class="col-sm-3" style="text-align: center">
-            <a href="{{ route('disciplinas.index') }}">
+            <a href="{{ route('solicitations') }}">
                 <img style="width: 128px; height: 128px" src="{{ asset('img/disciplina_ico.png') }}">
             </a>
             <h3>
-                <b>Disciplina</b>
+                <b>Solicitações</b>
             </h3>
         </div>
         <div class="col-sm-3" style="text-align: center">
-            <a href="{{ route('professores.index') }}">
-                <img style="width: 128px; height: 128px" src="{{ asset('img/professor_ico.png') }}">
+            <a href="{{ route('classroom') }}">
+                <img style="width: 128px; height: 128px" src="{{ asset('img/disciplina_ico.png') }}">
             </a>
             <h3>
-                <b>Professor</b>
-            </h3>
-        </div>
-        <div class="col-sm-3" style="text-align: center">
-            <a href="{{ route('alunos.index') }}">
-                <img style="width: 128px; height: 128px" src="{{ asset('img/aluno_ico.png') }}">
-            </a>
-            <h3>
-                <b>Aluno</b>
+                <b>Turmas</b>
             </h3>
         </div>
        
