@@ -12,7 +12,7 @@
                 <tr style="text-align: center">
                     <td style="display: none">{{ $item['id'] }}</td>
                     <td>{{ $item['name'] }}</td>
-                    <td>
+                    <td id="{{ $item['id'] }}selectsStudents" >
                         <select class="form-control">
                             @foreach ($item['student'] as $a)
                                 <option>{{$a['name']}}</option>

@@ -150,8 +150,14 @@
         }
 
         function update(id) {
+            var val = [];
+            $(':checkbox:checked').each(function(i){
+                val[i] = $(this).val();
+            });
+
             classes = {
                 name: $("#name").val(),
+                students: val
             };
 
             $.ajax({
@@ -160,15 +166,24 @@
                 context: this,
                 data: classes,
                 success: function (data) {
+                    console.log(data);
                     lines = $("#tabela>tbody>tr");
                     const dataParse = (JSON.parse(data));
                     e = lines.filter( function(i, e) {
                         return e.cells[0].textContent == dataParse.id;
                     } );
-                    console.log(e);
-
+ 
                     if(e) {
                         e[0].cells[1].textContent = dataParse.name;
+                        $("#"+dataParse.id+"selectsStudents").empty();
+
+                        let lineselect = '<select class="form-control">';
+                        for (let i = 0; i < dataParse.student.length; i++) {
+                            lineselect = lineselect + '<option>'+dataParse.student[i].name+'</option>';
+                        }
+
+                        lineselect = lineselect + '</select>';
+                        $("#"+dataParse.id+"selectsStudents").append(lineselect);
                         //e[0].cells[2].textContent = dataParse.curso.nome;
                         //e[0].cells[3].textContent = dataParse.professor.nome;
                     }
