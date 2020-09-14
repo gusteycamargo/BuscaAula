@@ -20,6 +20,7 @@ class SolicitationController extends Controller
         }
 
         $teacher = Teacher::findOrFail($request->input('teacher_id'));
+        info($teacher);
         $student = Student::findOrFail($request->input('student_id'));
 
         if(isset($teacher) && isset($student)) {

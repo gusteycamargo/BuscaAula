@@ -15,6 +15,7 @@
                     <td>{{ $item['email'] }}</td>
                     <td>
                         <a nohref style="cursor: pointer" onclick="solicitation('{{ $student_id }}', '{{ $item['id'] }}')"><img src="{{ asset('img/icons/add.png') }}"></a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

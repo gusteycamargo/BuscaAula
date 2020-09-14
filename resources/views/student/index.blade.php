@@ -60,15 +60,16 @@
         })
 
         function solicitation(student, teacher) { 
-            solicitation = {
+            solicitationObj = {
                 student_id: student,
                 teacher_id: teacher
             };
+
             $.ajax({
                 type: "POST",
                 url: "/api/solicitations",
                 context: this,
-                data: solicitation,
+                data: solicitationObj,
                 success: function (data) {
                     alert('SOLICITAÇÂO ENVIADA')
                 },
