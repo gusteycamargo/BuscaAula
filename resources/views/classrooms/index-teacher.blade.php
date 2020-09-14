@@ -4,6 +4,9 @@
  
     <div class='row justify-content-center'>
          <div class='col-sm-8'>
+            @if(Auth::user()->subject_id == null)
+                <p>Acesse a página meu perfil para adicionar uma matéria e os alunos encontrarem você mais facilmente!</p>
+            @endif
             <button class="btn btn-primary btn-block" onclick="create('{{ Auth::user()->id }}')">
                 <b>Cadastrar Nova Turma</b>
             </button>

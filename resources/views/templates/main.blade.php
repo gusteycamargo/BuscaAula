@@ -114,7 +114,6 @@
         </nav>
 
         @yield('conteudo')
-
     </body>
     <hr>
     <footer>

@@ -34,20 +34,6 @@
                                 @enderror
                             </div>
                         </div>
-                        <!-- MATÉRIAS -->
-                        <div class="form-group row">
-                            <label for="subject" class="col-md-4 col-form-label text-md-right">{{ __('Matéria') }}</label>
-                            <div class="col-md-6">
-                                <select name="subject" id="subject" class="form-control" required>
-                                    <option></option>
-                                </select>
-                                @error('subject')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
                         <!-- INICIAL -->
                         <div class="form-group">
                             <div class="row">

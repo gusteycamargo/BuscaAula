@@ -20,7 +20,7 @@ class Teacher extends Migration
             $table->string('password')->notNullable();
             $table->time('hour_initial', 0);
             $table->time('hour_final', 0);
-            $table->unsignedBigInteger('subject_id')->references('id')->on('subjects');
+            $table->unsignedBigInteger('subject_id')->references('id')->on('subjects')->nullable();
             $table->timestamps();
         });
     }

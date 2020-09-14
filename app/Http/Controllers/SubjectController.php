@@ -7,6 +7,13 @@ use App\Subject;
 
 class SubjectController extends Controller
 {
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255', 'unique:subjects'],
+        ]);
+    }
+
     public function index()
     {
         $subjects = Subject::all();
@@ -21,6 +28,11 @@ class SubjectController extends Controller
 
     public function store(Request $request)
     {
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return redirect('/subjects')->withErrors( $validator )->withInput();
+        }
+
         $subject = new Subject();
         $subject->name = $request->input('name');
         $subject->save();

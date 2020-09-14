@@ -55,7 +55,7 @@ class TeacherController extends Controller
 
             $teacher->update();
 
-            return redirect()->intended(route('profile-teacher'));
+            return redirect()->intended(route('home-teacher'));
         }
         return response('Professor nao encontrado', 404);
     }

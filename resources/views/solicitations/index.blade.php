@@ -3,8 +3,11 @@
 @section('conteudo')
  
      <br>
- 
+     
      <div class="justify-content-center align-itens-center row">
+        @if(Auth::user()->subject_id == null)
+            <p>Acesse a página meu perfil para adicionar uma matéria e os alunos encontrarem você mais facilmente!</p>
+        @endif
         @component(
             'components.tablelistSolicitations', [
                 "header" => ['Nome', 'E-mail', 'Eventos'],
