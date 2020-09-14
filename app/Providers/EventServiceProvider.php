@@ -18,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\HomeEvent' => [
             'App\Listeners\HomeEventListener'
         ],
+        'App\Events\RegistrationEvent' => [
+            'App\Listeners\RegistrationEventListener'
+        ],
         'Illuminate\Auth\Events\Registered' => [
             'App\Listeners\RegisterListener'
         ],

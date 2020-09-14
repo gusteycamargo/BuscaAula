@@ -7,6 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Student;
+use App\Teacher;
+use App\Classroom;
 
 class NewRegistered extends Mailable
 {
@@ -17,9 +19,11 @@ class NewRegistered extends Mailable
      *
      * @return void
      */
-    public function __construct(Student $user)
+    public function __construct(Teacher $teacher, Student $student, Classroom $class)
     {
-        $this->user = $user;
+        $this->teacher = $teacher;
+        $this->student = $student;
+        $this->class = $class;
     }
 
     /**
@@ -29,6 +33,6 @@ class NewRegistered extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.new-register')->with(['user' => $this->user]);
+        return $this->view('mails.new-register')->with(['teacher' => $this->teacher, 'student' => $this->student, 'class' => $this->class]);
     }
 }
