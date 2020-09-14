@@ -45,4 +45,17 @@ class RegistrationController extends Controller
         //return json_encode($classes);
         return view('classrooms.index-student', compact(['classes']));
     }
+
+    public function destroy($id) {
+        $registration = Registration::findOrFail($id);
+
+        if(isset($registration)) {
+            $registration->delete();
+
+            return json_encode($registration);
+        }
+
+        //return json_encode($classes);
+        return response('Matrícula não encontrada', 404);
+    }
 }

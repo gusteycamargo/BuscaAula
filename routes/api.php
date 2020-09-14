@@ -32,3 +32,5 @@ Route::delete('classes/{id}', 'ClassroomController@destroy');
 
 Route::resource('subjects', 'SubjectController');
 
+Route::delete('registration/{id}', 'RegistrationController@destroy');
+
