@@ -102,7 +102,7 @@
                 url: "/api/solicitations/"+id,
                 context: this,
                 success: function (data) {
-                    $("#"+idOfSolicitation+"solc").remove();
+                    $("#"+id+"solc").remove();
                 
                     alert('Solicitação recusada!')
                 },

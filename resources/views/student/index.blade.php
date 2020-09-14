@@ -64,12 +64,20 @@
                 student_id: student,
                 teacher_id: teacher
             };
-            console.log(solicitation);
-            $.post("/api/solicitations", solicitation, function(data) {
-                novoCurso = JSON.parse(data);
-                console.log(novoCurso);
-                alert('SOLICITAÇÂO ENVIADA')
-            });
+
+            $.ajax({
+                type: "POST",
+                url: "/api/solicitations",
+                context: this,
+                data: solicitation,
+                success: function (data) {
+                    alert('SOLICITAÇÂO ENVIADA')
+                },
+                error: function(error) {
+                    alert(error.responseText);
+                    console.log(error);
+                }
+            })
         }
 
     </script>

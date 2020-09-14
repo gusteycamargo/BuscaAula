@@ -35,7 +35,7 @@
                             <input type="text" class="form-control" name="name" id="name" required>
                         </div>
                         <div class='col-sm-12' style="margin-top: 14px">
-                            <label><b>Alunos matrículados</b></label>
+                            <label><b id="labelStudents">Alunos matrículados</b></label>
                             <div id="students" class="column">
 
                             </div>
@@ -61,6 +61,7 @@
             teacher_id = id;
             $('#modalClass').modal().find('.modal-title').text("Nova turma");
             $('#name').val('');
+            $('#labelStudents').text('');
             $('#modalClass').modal('show');
         }
 
@@ -131,7 +132,7 @@
 
         function edit(id) { 
             $('#modalClass').modal().find('.modal-title').text("Alterar turma");
-
+            $('#labelStudents').text('Alunos matrículados');
             $.getJSON('/api/classes/'+id, function(data) {
                 console.log(data);
                 $('#id').val(data.id);
@@ -191,6 +192,22 @@
                 error: function(error) {
                     alert('ERRO - UPDATE');
                     console.log(error);
+                }
+            })
+        }
+
+        function deleteClassroom(id) {
+            $.ajax({
+                type: "DELETE",
+                url: "/api/classes/"+id,
+                context: this,
+                success: function (data) {
+                    $("#"+id+"line").remove();
+                
+                    alert('Turma excluída!')
+                },
+                error: function(error) {
+                    alert('ERRO AO EXCLUIR TURMA');
                 }
             })
         }

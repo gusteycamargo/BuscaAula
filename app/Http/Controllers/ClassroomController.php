@@ -3,27 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Teacher;
 use App\Student;
 use App\Classroom;
 use App\Registration;
-
-use Illuminate\Support\Facades\Auth;
 
 class ClassroomController extends Controller
 {
     
     public function classesWithTeacherLogged() {
         // $teacher = Auth::user();
-        $classes = Classroom::findOrFail(Auth::user()->id)->with(['student'])->get();
 
+        $classes = Classroom::where('teacher_id', Auth::user()->id)->with(['student'])->get();
         return view('classrooms.index-teacher', compact(['classes']));
     }
-
+    
     public function loadJsonClassesWithTeacherLogged($id) {
         // $teacher = Auth::user();
-        $classes = Classroom::findOrFail($id)->get();
-
+        $classes = Classroom::where('teacher_id', $id)->get();
         return json_encode($classes);
         //return view('classrooms.index-teacher', compact(['classes']));
     }
@@ -52,8 +50,7 @@ class ClassroomController extends Controller
         return response('Turma nao encontrada', 404);
     }
 
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         $classroom = Classroom::where(
             function ($query) use($id) {
                 $query->where('id', '=', $id);
@@ -99,4 +96,24 @@ class ClassroomController extends Controller
         }
         return response('Turma nao encontrada', 404);
     }
+
+    public function destroy($id)
+    {
+        $classroom = Classroom::findOrFail($id);
+        if(isset($classroom)) {
+            $classroom->delete();
+
+            return json_encode($classroom);
+        }
+
+        return response('Turma nao encontrada', 404);
+    }
 }
+
+
+
+
+
+
+
+

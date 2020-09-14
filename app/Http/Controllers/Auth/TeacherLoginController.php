@@ -37,7 +37,7 @@ class TeacherLoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return view('auth.login-teacher');
+        return redirect()->intended(route('initial'));
     }
 
     public function index() {

@@ -13,6 +13,12 @@ class SolicitationController extends Controller
 {
     public function store(Request $request)
     {
+        $verify = Solicitation::where('teacher_id', $request->input('teacher_id'))->where('student_id', $request->input('student_id'))->first();
+
+        if(isset($verify)) {
+            return response('Já existe uma solicitação em aberto', 418);
+        }
+
         $teacher = Teacher::findOrFail($request->input('teacher_id'));
         $student = Student::findOrFail($request->input('student_id'));
 

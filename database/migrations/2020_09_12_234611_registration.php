@@ -16,7 +16,8 @@ class Registration extends Migration
         Schema::create('registrations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('student_id')->references('id')->on('students');
-            $table->unsignedBigInteger('classroom_id')->references('id')->on('classrooms');
+            $table->unsignedBigInteger('classroom_id');
+            $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
             $table->timestamps();
         });
     }

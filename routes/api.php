@@ -28,6 +28,7 @@ Route::post('registration', 'RegistrationController@store');
 Route::post('classes', 'ClassroomController@store');
 Route::get('classes/{id}', 'ClassroomController@show');
 Route::put('classes/{id}', 'ClassroomController@update');
+Route::delete('classes/{id}', 'ClassroomController@destroy');
 
 Route::resource('subjects', 'SubjectController');
 
