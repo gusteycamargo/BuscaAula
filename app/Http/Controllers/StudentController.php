@@ -13,9 +13,10 @@ class StudentController extends Controller
 
     protected function validator(array $data)
     {
+        $user = Auth::user();
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255']
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:students,email,'.Auth::user()->id
         ]);
     }
 

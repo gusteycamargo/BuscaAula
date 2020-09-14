@@ -16,11 +16,11 @@ class TeacherController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'subject' => ['required'],
-            'hour_initial' => ['required'],
-            'hour_final' => ['required']
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:teachers,email,'.Auth::user()->id,
+            'subject' => 'required',
+            'hour_initial' => 'required',
+            'hour_final' => 'required'
         ]);
     }
 
