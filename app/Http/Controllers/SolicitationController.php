@@ -22,12 +22,16 @@ class SolicitationController extends Controller
         $teacher = Teacher::findOrFail($request->input('teacher_id'));
         $student = Student::findOrFail($request->input('student_id'));
 
-        $solicitation = new Solicitation();
-        $solicitation->teacher()->associate($teacher);
-        $solicitation->student()->associate($student); 
-        $solicitation->save();
+        if(isset($teacher) && isset($student)) {
+            $solicitation = new Solicitation();
+            $solicitation->teacher()->associate($teacher);
+            $solicitation->student()->associate($student); 
+            $solicitation->save();
+    
+            return json_encode($solicitation);
+        }
 
-        return json_encode($solicitation);
+        return response('Estudante ou professor nao encontrado, impossível realizar solicitação', 404);
     }
 
     public function solicitationsByTeacher(Request $request) {

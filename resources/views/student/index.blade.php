@@ -64,7 +64,6 @@
                 student_id: student,
                 teacher_id: teacher
             };
-
             $.ajax({
                 type: "POST",
                 url: "/api/solicitations",

@@ -30,12 +30,15 @@ class ClassroomController extends Controller
     {
         $teacher = Teacher::findOrFail($request->input('teacher_id'));
 
-        $solicitation = new Classroom();
-        $solicitation->name = $request->input('name');
-        $solicitation->teacher()->associate($teacher);
-        $solicitation->save();
+        if(isset($teacher)) {
+            $solicitation = new Classroom();
+            $solicitation->name = $request->input('name');
+            $solicitation->teacher()->associate($teacher);
+            $solicitation->save();
 
-        return json_encode($solicitation);
+            return json_encode($solicitation);
+        }
+        return response('Professor nao encontrado, impossível cadastrar uma turma', 404);
     }
 
     public function show($id)

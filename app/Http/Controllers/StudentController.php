@@ -28,11 +28,12 @@ class StudentController extends Controller
     public function filter(Request $request) {
         if($request->input('subject') == null && $request->input('hour_initial') == null && $request->input('hour_final') == null) {
             $teachers = Teacher::all();
+
         }
         else {
             $teachers = Teacher::where(function ($query) use ($request) {
-                                        if($request->input('subject_id')) {
-                                            $query->where('subject_id', '=', $request->input('subject_id'));
+                                        if($request->input('subject')) {
+                                            $query->where('subject_id', '=', $request->input('subject'));
                                         }
                                         if($request->input('hour_initial')) {
                                             $query->where('hour_initial', '>=', $request->input('hour_initial'));
